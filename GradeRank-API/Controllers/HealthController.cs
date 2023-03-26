@@ -23,6 +23,7 @@ namespace GradeRank_API.Controllers
     public async Task<IActionResult> GetHealthStatus()
     {
       var healthStatus = _healthStatusUseCase.GetStatusUseCase();
+      healthStatus = "teste";
       if (healthStatus == null)
         return NotFound();
       return Ok(healthStatus);
