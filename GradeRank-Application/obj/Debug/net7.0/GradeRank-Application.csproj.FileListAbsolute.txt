@@ -1,0 +1,15 @@
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\bin\Debug\net7.0\GradeRank-Application.deps.json
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\bin\Debug\net7.0\GradeRank-Application.dll
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\bin\Debug\net7.0\GradeRank-Application.pdb
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\bin\Debug\net7.0\GradeRank-Domain.dll
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\bin\Debug\net7.0\GradeRank-Domain.pdb
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.csproj.AssemblyReference.cache
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.AssemblyInfoInputs.cache
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.AssemblyInfo.cs
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.csproj.CoreCompileInputs.cache
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.csproj.CopyComplete
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.dll
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\refint\GradeRank-Application.dll
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\GradeRank-Application.pdb
+C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Application\obj\Debug\net7.0\ref\GradeRank-Application.dll
