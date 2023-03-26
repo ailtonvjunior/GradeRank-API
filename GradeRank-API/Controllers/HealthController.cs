@@ -13,7 +13,6 @@ namespace GradeRank_API.Controllers
     public HealthController(IHealthStatusUseCase healthStatusUseCase)
     {
       _healthStatusUseCase = healthStatusUseCase;
-
     }
 
     [AllowAnonymous]
