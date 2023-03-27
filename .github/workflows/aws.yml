@@ -82,7 +82,8 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
-        aws --region ${{ env.AWS_REGION }} ecs stop-task --task ${{ env.ECS_TASK_DEFINITION }} --cluster ${{ env.ECS_CLUSTER }}
+        TEST_TASKID=$(aws ecs list-tasks --cluster ${{ env.ECS_CLUSTER }} | jq -r '.taskArns[0]')
+        aws ecs stop-task --cluster ${{ env.ECS_CLUSTER }} --task $TEST_TASKID
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
