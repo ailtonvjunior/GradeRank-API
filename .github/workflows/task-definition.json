@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::330437768654:role/ecsTaskExecutionRole",
+  "executionRoleArn": null,
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -29,7 +29,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "330437768654.dkr.ecr.us-west-1.amazonaws.com/graderank-api:latest",
+      "image": "330437768654.dkr.ecr.us-west-1.amazonaws.com/graderank-api:cde8e0bdb7b3e4f019f7d95181884a72fc64aef6",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -46,18 +46,18 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "GradeRank-API"
+      "name": "API-Grade-Rank"
     }
   ],
   "placementConstraints": [],
-  "memory": "512",
+  "memory": "200",
   "taskRoleArn": "arn:aws:iam::330437768654:role/ecsTaskExecutionRole",
   "compatibilities": [
     "EXTERNAL",
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:330437768654:task-definition/API:6",
-  "family": "API",
+  "taskDefinitionArn": "arn:aws:ecs:ca-central-1:330437768654:task-definition/API-PDS:2",
+  "family": "API-PDS",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -70,22 +70,16 @@
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.task-iam-role"
-    },
-    {
-      "targetId": null,
-      "targetType": null,
-      "value": null,
-      "name": "ecs.capability.execution-role-ecr-pull"
     }
   ],
   "pidMode": null,
   "requiresCompatibilities": [
     "EC2"
   ],
-  "networkMode": "bridge",
+  "networkMode": null,
   "runtimePlatform": null,
-  "cpu": "512",
-  "revision": 6,
+  "cpu": "200",
+  "revision": 2,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
