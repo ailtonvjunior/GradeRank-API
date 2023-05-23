@@ -19,8 +19,7 @@ namespace GradeRank_API.Controllers
 
     [AllowAnonymous]
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> CreateNewUser([FromBody] UserRequest user)
     {
       try
