@@ -37,13 +37,13 @@ on:
     - main
 
 env:
-  AWS_REGION: us-west-1                                             # set this to your preferred AWS region, e.g. us-west-1
+  AWS_REGION: ca-central-1                                             # set this to your preferred AWS region, e.g. us-west-1
   ECR_REPOSITORY: graderank-api                                       # set this to your Amazon ECR repository name
-  ECS_SERVICE: GradeRank-API                                           # set this to your Amazon ECS service name
-  ECS_CLUSTER: UFMG                                                   # set this to your Amazon ECS cluster name
+  ECS_SERVICE: API                                           # set this to your Amazon ECS service name
+  ECS_CLUSTER: PDS-UFMG                                                   # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: .github/workflows/task-definition.json                         # set this to the path to your Amazon ECS task definition
                                                                        # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: GradeRank-API                                      # set this to the name of the container in the
+  CONTAINER_NAME: API-Grade-Rank                                     # set this to the name of the container in the
                                                                         # containerDefinitions section of your task definition
 
 permissions:
