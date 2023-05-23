@@ -6,13 +6,17 @@ namespace GradeRank_Domain.Models.Request
 {
   public class UserRequest
   {
-    public UserRequest(string login, string password)
+    public UserRequest(string name, string registration, string email, string password)
     {
-      Login = login;
+      Name = name;
+      Registration = registration;
+      Email = email;
       Password = password;
     }
-
-    public string Login { get; set; }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Registration { get; set; }
+    public string Email { get; set; }
     public string Password { get; set; }
   }
 }

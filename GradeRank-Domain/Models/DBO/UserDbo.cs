@@ -7,9 +7,11 @@ namespace GradeRank_Domain.Models.DBO
   [Table("gr_users")]
   public class UserDbo
   {
-    public UserDbo(string login, string password)
+    public UserDbo(string name, string registration, string email, string password)
     {
-      Login = login;
+      Name = name;
+      Registration = registration;
+      Email = email;
       Password = password;
     }
 
@@ -17,8 +19,14 @@ namespace GradeRank_Domain.Models.DBO
     [Column("id_user")]
     public int Id { get; set; }
 
-    [Column("login_user")]
-    public string Login { get; set; }
+    [Column("name_user")]
+    public string Name { get; set; }
+
+    [Column("registration_user")]
+    public string Registration { get; set; }
+
+    [Column("email_user")]
+    public string Email { get; set; }
 
     [Column("pwd_user")]
     public string Password { get; set; }

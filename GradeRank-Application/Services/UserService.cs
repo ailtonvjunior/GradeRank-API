@@ -19,8 +19,8 @@ namespace GradeRank_Application.UseCases
 
     public async Task CreateNewUser(UserRequest user)
     {
-      var userDbo = new UserDbo (user.Login, user.Password);
-      if (!_userRepository.VerifyIfUserExistsByLogin(user.Login).Result)
+      var userDbo = new UserDbo (user.Name, user.Registration, user.Email, user.Password);
+      if (!_userRepository.VerifyIfUserExistsByLogin(user.Registration, user.Email).Result)
       {
         await _userRepository.InsertUser(userDbo);
         await _unitOfWork.Save();

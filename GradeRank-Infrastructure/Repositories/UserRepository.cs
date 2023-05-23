@@ -18,10 +18,10 @@ namespace GradeRank_Infrastructure.Repositories
     {
       await _context.Users.AddAsync(user);
     }
-    public async Task<bool> VerifyIfUserExistsByLogin(string login)
+    public async Task<bool> VerifyIfUserExistsByLogin(string registration, string email)
     {
-      var user = await _context.Users.AnyAsync(u => u.Login == login);
-      return user;
+      var userExists = await _context.Users.AnyAsync(u => u.Registration == registration || u.Email == email);
+      return userExists;
     }
   }
 }
