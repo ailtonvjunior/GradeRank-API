@@ -1,11 +1,12 @@
-﻿using GradeRank_Domain.Models;
+﻿using GradeRank_Domain.Models.DBO;
+using GradeRank_Domain.Models.Request;
 using GradeRank_Domain.Repositories;
 using GradeRank_Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace GradeRank_Infrastructure.Repositories
 {
-  public class HealthStatusRepository : IHealthStatusRepository
+    public class HealthStatusRepository : IHealthStatusRepository
   {
     private readonly GradeRankContext _context;
 

@@ -1,11 +1,12 @@
-﻿using GradeRank_Domain.Models;
+﻿using GradeRank_Domain.Models.DBO;
+using GradeRank_Domain.Models.Request;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 
 namespace GradeRank_Infrastructure.Context
 {
-  public class GradeRankContext : DbContext
+    public class GradeRankContext : DbContext
   {
 
     private IDbConnection _connection;
@@ -25,6 +26,7 @@ namespace GradeRank_Infrastructure.Context
     }
 
     public virtual DbSet<HealthStatusDbo> HealthStatus { get; set; }
+    public virtual DbSet<UserDbo> Users { get; set; }
 
     public GradeRankContext()
     {

@@ -4,16 +4,16 @@ using GradeRank_Domain.Repositories;
 
 namespace GradeRank_Application.UseCases
 {
-  public class HealthStatusUseCase : IHealthStatusUseCase
+  public class HealthStatusService : IHealthStatusService
   {
     private readonly IHealthStatusRepository _healthStatusRepository;
 
-    public HealthStatusUseCase(IHealthStatusRepository healthStatusRepository)
+    public HealthStatusService(IHealthStatusRepository healthStatusRepository)
     {
       _healthStatusRepository = healthStatusRepository;
     }
 
-    public String GetStatusUseCase() 
+    public String GetStatusService() 
     {
       string healthstatus = _healthStatusRepository.GetHealthStatus().Result.Status;
       return healthstatus;

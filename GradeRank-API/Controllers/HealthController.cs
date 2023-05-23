@@ -8,9 +8,9 @@ namespace GradeRank_API.Controllers
 
   public class HealthController : Controller
   {
-    private readonly IHealthStatusUseCase _healthStatusUseCase;
+    private readonly IHealthStatusService _healthStatusUseCase;
 
-    public HealthController(IHealthStatusUseCase healthStatusUseCase)
+    public HealthController(IHealthStatusService healthStatusUseCase)
     {
       _healthStatusUseCase = healthStatusUseCase;
     }
@@ -21,7 +21,7 @@ namespace GradeRank_API.Controllers
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetHealthStatus()
     {
-      var healthStatus = _healthStatusUseCase.GetStatusUseCase();
+      var healthStatus = _healthStatusUseCase.GetStatusService();
       if (healthStatus == null)
         return NotFound();
       return Ok(healthStatus);

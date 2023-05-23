@@ -2,6 +2,7 @@ using GradeRank_Application.Interfaces;
 using GradeRank_Application.UseCases;
 using GradeRank_Domain.Repositories;
 using GradeRank_Infrastructure.Context;
+using GradeRank_Infrastructure.DataAccess;
 using GradeRank_Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,8 +19,12 @@ builder.Logging.AddConsole();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IHealthStatusUseCase, HealthStatusUseCase>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IHealthStatusService, HealthStatusService>();
 builder.Services.AddScoped<IHealthStatusRepository, HealthStatusRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddDbContext<GradeRankContext>(
                         (prv, options) =>

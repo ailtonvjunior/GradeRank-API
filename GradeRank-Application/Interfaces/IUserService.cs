@@ -1,4 +1,5 @@
 ﻿using GradeRank_Domain.Models;
+using GradeRank_Domain.Models.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace GradeRank_Application.Interfaces
 {
-  public interface IHealthStatusService
+  public interface IUserService
   {
-    String GetStatusService();
+    Task CreateNewUser(UserRequest user);
   }
 }
