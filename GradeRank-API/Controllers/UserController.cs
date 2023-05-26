@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GradeRank_API.Controllers
 {
-  [Route("api/[controller]")]
-
   public class LoginController : Controller
   {
     private readonly IUserService _userService;
@@ -17,6 +15,7 @@ namespace GradeRank_API.Controllers
       _userService = userService;
     }
 
+    [Route("api/[controller]")]
     [AllowAnonymous]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -32,6 +31,17 @@ namespace GradeRank_API.Controllers
       {
         return Conflict(ex.Message);
       }
+    }
+
+    [Route("api/Auth")]
+    [AllowAnonymous]
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> AuthenticateUser(string email, string pwd)
+    {
+      var authenticated = _userService.AuthenticateUser(email, pwd);
+      if (authenticated) return Ok();
+      return Unauthorized();
     }
   }
 }

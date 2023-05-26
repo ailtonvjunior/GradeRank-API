@@ -8,5 +8,6 @@ namespace GradeRank_Domain.Repositories
   {
     Task InsertUser(UserDbo user);
     Task<bool> VerifyIfUserExistsByLogin(string registration, string email);
+    Task<bool> AuthenticateUser(string email, string pwd);
   }
 }

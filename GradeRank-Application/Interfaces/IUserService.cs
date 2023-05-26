@@ -11,5 +11,6 @@ namespace GradeRank_Application.Interfaces
   public interface IUserService
   {
     Task CreateNewUser(UserRequest user);
+    Boolean AuthenticateUser(string email, string pwd);
   }
 }
