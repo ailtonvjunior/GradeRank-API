@@ -25,6 +25,8 @@ builder.Services.AddScoped<IHealthStatusService, HealthStatusService>();
 builder.Services.AddScoped<IHealthStatusRepository, HealthStatusRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 
 builder.Services.AddDbContext<GradeRankContext>(
                         (prv, options) =>

@@ -27,6 +27,7 @@ namespace GradeRank_Infrastructure.Context
 
     public virtual DbSet<HealthStatusDbo> HealthStatus { get; set; }
     public virtual DbSet<UserDbo> Users { get; set; }
+    public virtual DbSet<CourseDbo> Courses { get; set; }
 
     public GradeRankContext()
     {
