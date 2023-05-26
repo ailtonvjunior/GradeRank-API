@@ -37,10 +37,10 @@ namespace GradeRank_API.Controllers
     [AllowAnonymous]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-    public async Task<IActionResult> AuthenticateUser(string email, string pwd)
+    public async Task<IActionResult> AuthenticateUser([FromBody] UserRequest user)
     {
-      var authenticated = _userService.AuthenticateUser(email, pwd);
-      if (authenticated) return Ok();
+      var authenticatedUser = _userService.AuthenticateUser(user.Email, user.Password);
+      if (authenticatedUser != null) return Ok(authenticatedUser);
       return Unauthorized();
     }
   }

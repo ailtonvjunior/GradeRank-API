@@ -24,9 +24,9 @@ namespace GradeRank_Infrastructure.Repositories
       return userExists;
     }
     
-    public async Task<bool> AuthenticateUser(string email, string pwd)
+    public async Task<UserDbo?> AuthenticateUser(string email, string pwd)
     {
-      var authenticated = await _context.Users.AnyAsync(u => u.Email == email && u.Password == pwd);
+      var authenticated = await _context.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == pwd);
       return authenticated;
     }
   }

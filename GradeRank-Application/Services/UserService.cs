@@ -29,7 +29,7 @@ namespace GradeRank_Application.UseCases
         throw new GradeRankException("Usuário já cadastrado na base de dados");
     }
     
-    public Boolean AuthenticateUser(string email, string pwd)
+    public UserDbo? AuthenticateUser(string email, string pwd)
     {
       return _userRepository.AuthenticateUser(email, pwd).Result;
     }
