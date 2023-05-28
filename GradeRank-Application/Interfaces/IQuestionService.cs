@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GradeRank_Domain.Models.DBO;
+using GradeRank_Domain.Models.Reponse;
 
 namespace GradeRank_Application.Interfaces
 {
-    public interface ICourseService
+  public interface IQuestionService
   {
-    List<CourseDbo> GetCoursesList(); 
-    CourseDbo? GetCourseById(int id);
+    Task<List<QuestionResponse>> GetQuestionsListAsync();
   }
 }

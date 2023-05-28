@@ -18,7 +18,8 @@ namespace GradeRank_API.Controllers
     [Route("api/[controller]sList")]
     [AllowAnonymous]
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetCoursesList()
     {
       var coursesList = _courseService.GetCoursesList();
@@ -27,7 +28,8 @@ namespace GradeRank_API.Controllers
     
     [Route("api/[controller]")]
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetCourseById(int id)
     {
       var course = _courseService.GetCourseById(id);

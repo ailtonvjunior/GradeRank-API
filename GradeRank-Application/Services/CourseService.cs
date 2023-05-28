@@ -6,7 +6,7 @@ using inter.people.central.Domain.Exceptions;
 
 namespace GradeRank_Application.UseCases
 {
-  public class CourseService : ICourseService
+    public class CourseService : ICourseService
   {
     private readonly ICourseRepository _courseRepository;
     private readonly IUnitOfWork _unitOfWork;
