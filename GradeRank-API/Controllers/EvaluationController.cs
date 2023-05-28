@@ -28,7 +28,7 @@ namespace GradeRank_API.Controllers
       }
       catch (GradeRankException ex)
       {
-        return Problem(ex.Message);
+        return Conflict(ex.Message);
       }
     }
 

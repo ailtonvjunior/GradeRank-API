@@ -25,7 +25,7 @@ namespace GradeRank_Application.UseCases
     public async Task CreateNewEvaluation(EvaluationComponentRequest evaluation)
     {
       var evaluationDbo = await _evaluationRepository.GetEvaluationsByIdUserAndIdCourse(evaluation.IdUser, evaluation.IdCourse);
-      if (evaluationDbo != null) 
+      if (evaluationDbo.Count != 0) 
       {
         throw new GradeRankException("O usuário já possui uma avaliação para esta disciplina");
       }
