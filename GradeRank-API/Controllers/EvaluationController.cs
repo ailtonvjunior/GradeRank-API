@@ -33,7 +33,7 @@ namespace GradeRank_API.Controllers
     }
 
     [AllowAnonymous]
-    [HttpDelete ("{idUser}/{idCourse}")]
+    [HttpDelete ("/api/{idUser}/{idCourse}")]
     public async Task<IActionResult> DeleteEvaluation([FromRoute] int idUser,int idCourse)
     {
       try
