@@ -6,7 +6,7 @@ using System.Data;
 
 namespace GradeRank_Infrastructure.Context
 {
-    public class GradeRankContext : DbContext
+  public class GradeRankContext : DbContext
   {
 
     private IDbConnection _connection;
@@ -29,6 +29,7 @@ namespace GradeRank_Infrastructure.Context
     public virtual DbSet<UserDbo> Users { get; set; }
     public virtual DbSet<CourseDbo> Courses { get; set; }
     public virtual DbSet<QuestionDbo> Questions { get; set; }
+    public virtual DbSet<EvaluationDbo> Evaluations { get; set; }
 
     public GradeRankContext()
     {
@@ -43,6 +44,7 @@ namespace GradeRank_Infrastructure.Context
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.ApplyConfigurationsFromAssembly(typeof(GradeRankContext).Assembly);
+      
     }
   }
 }

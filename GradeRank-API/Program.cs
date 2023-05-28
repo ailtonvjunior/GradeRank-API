@@ -4,9 +4,8 @@ using GradeRank_Domain.Repositories;
 using GradeRank_Infrastructure.Context;
 using GradeRank_Infrastructure.DataAccess;
 using GradeRank_Infrastructure.Repositories;
+using inter.people.central.Domain.Mappings;
 using Microsoft.EntityFrameworkCore;
-
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Logging.AddConsole();
+builder.Services.AddAutoMapper(typeof(MappingLibrary));
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -27,8 +28,12 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
-builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
 builder.Services.AddScoped<IQuestionService, QuestionService>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+builder.Services.AddScoped<IEvaluationService, EvaluationService>();
+builder.Services.AddScoped<IEvaluationRepository, EvaluationRepository>();
+
+
 
 builder.Services.AddDbContext<GradeRankContext>(
                         (prv, options) =>

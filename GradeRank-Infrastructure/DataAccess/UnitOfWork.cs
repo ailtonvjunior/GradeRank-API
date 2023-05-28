@@ -1,6 +1,6 @@
 ﻿using GradeRank_Domain.Repositories;
 using GradeRank_Infrastructure.Context;
-
+using inter.people.central.Domain.Exceptions;
 
 namespace GradeRank_Infrastructure.DataAccess
 {
@@ -22,7 +22,7 @@ namespace GradeRank_Infrastructure.DataAccess
         catch (Exception ex)
         {
           Console.WriteLine(ex.Message);
-          throw new Exception("Erro ao salvar no banco de dados");
+          throw new GradeRankException("Erro ao salvar no banco de dados");
         }
       }
     }

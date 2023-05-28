@@ -154,3 +154,12 @@ C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\refint\Gr
 C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.pdb
 C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.genruntimeconfig.cache
 C:\Repos\UFMG\GradeRank\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\ref\GradeRank-Tests.dll
+C:\Repos\GradeRank-API\GradeRank-Tests\bin\Debug\net7.0\CoverletSourceRootsMapping
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.csproj.AssemblyReference.cache
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.AssemblyInfoInputs.cache
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.AssemblyInfo.cs
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.csproj.CoreCompileInputs.cache
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.dll
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\refint\GradeRank-Tests.dll
+C:\Repos\GradeRank-API\GradeRank-Tests\obj\Debug\net7.0\GradeRank-Tests.pdb
