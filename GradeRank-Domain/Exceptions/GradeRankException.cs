@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace inter.people.central.Domain.Exceptions
+namespace GradeRank_Domain.Domain.Exceptions
 {
     public class GradeRankException : Exception
     {

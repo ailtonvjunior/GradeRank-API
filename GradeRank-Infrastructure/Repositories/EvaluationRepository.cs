@@ -29,5 +29,15 @@ namespace GradeRank_Infrastructure.Repositories
       var evaluation = await _context.Evaluations.Where(e => e.IdUser == idUser && e.IdCourse == idCourse).ToListAsync();
       return evaluation;
     }
+
+    public int GetNumberOfEvaluationsByIdCourse(int idCourse)
+    {
+      var numRows = _context.Evaluations
+        .Select(e => new { e.IdCourse, e.IdUser })
+        .Distinct()
+        .Count();
+      return numRows;
+    }
   }
 }
+

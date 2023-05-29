@@ -1,6 +1,6 @@
 ﻿using GradeRank_Application.Interfaces;
+using GradeRank_Domain.Domain.Exceptions;
 using GradeRank_Domain.Models.Request;
-using inter.people.central.Domain.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

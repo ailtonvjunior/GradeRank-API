@@ -4,7 +4,7 @@ using GradeRank_Domain.Models.Response;
 using GradeRank_Domain.Models.Request;
 using System.Diagnostics.CodeAnalysis;
 
-namespace inter.people.central.Domain.Mappings
+namespace GradeRank_Domain.Mappings
 {
   [ExcludeFromCodeCoverage]
   public class MappingLibrary : Profile
@@ -14,6 +14,7 @@ namespace inter.people.central.Domain.Mappings
       MappingUser();
       MappingQuestion();
       MappingEvaluation();
+      MappingCourse();
     }
 
     private void MappingUser()
@@ -42,6 +43,11 @@ namespace inter.people.central.Domain.Mappings
 
       CreateMap<EvaluationRequest, EvaluationDbo>()
           .ForMember(dest => dest.EvaluationDate, opt => opt.MapFrom(src => DateTime.Now));
+    }
+    private void MappingCourse()
+    {
+      CreateMap<CourseDbo, CourseResponse>()
+          .ForMember(dest => dest.IdProfessor, opt => opt.MapFrom(src => src.Professor));
     }
 
   }

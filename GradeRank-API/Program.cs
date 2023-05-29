@@ -1,10 +1,10 @@
 using GradeRank_Application.Interfaces;
 using GradeRank_Application.UseCases;
+using GradeRank_Domain.Mappings;
 using GradeRank_Domain.Repositories;
 using GradeRank_Infrastructure.Context;
 using GradeRank_Infrastructure.DataAccess;
 using GradeRank_Infrastructure.Repositories;
-using inter.people.central.Domain.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

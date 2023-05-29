@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using GradeRank_Application.Interfaces;
+using GradeRank_Domain.Domain.Exceptions;
 using GradeRank_Domain.Models.DBO;
 using GradeRank_Domain.Models.Request;
 using GradeRank_Domain.Repositories;
-using inter.people.central.Domain.Exceptions;
 
 namespace GradeRank_Application.UseCases
 {

@@ -20,6 +20,11 @@ namespace GradeRank_Domain.Models.DBO
     [Column("desc_question")]
     public string Question { get; set; }
 
+    [Column("idc_CourseQuestion")]
+    public bool IsCourseQuestion { get; set; }
+
+    [Column("idcProfessorQuestion")]
+    public bool IsProfessorQuestion { get; set; }
   }
 }
 

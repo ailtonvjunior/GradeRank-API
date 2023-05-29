@@ -1,30 +1,42 @@
-﻿using GradeRank_Application.Interfaces;
+﻿using AutoMapper;
+using GradeRank_Application.Interfaces;
+using GradeRank_Domain.Domain.Extensions;
 using GradeRank_Domain.Models.DBO;
 using GradeRank_Domain.Models.Request;
+using GradeRank_Domain.Models.Response;
 using GradeRank_Domain.Repositories;
-using inter.people.central.Domain.Exceptions;
 
 namespace GradeRank_Application.UseCases
 {
     public class CourseService : ICourseService
   {
     private readonly ICourseRepository _courseRepository;
-    private readonly IUnitOfWork _unitOfWork;
+    private readonly IEvaluationRepository _evaluationRepository;
 
-    public CourseService(ICourseRepository courseRepository, IUnitOfWork unitOfWork)
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+
+    public CourseService(ICourseRepository courseRepository, IUnitOfWork unitOfWork, IMapper mapper, IEvaluationRepository evaluationRepository)
     {
       _courseRepository = courseRepository;
       _unitOfWork = unitOfWork;
+      _mapper = mapper;
+      _evaluationRepository = evaluationRepository;
     }
 
-    public List<CourseDbo> GetCoursesList()
+    public List<CourseResponse> GetCoursesList()
     {
-      return _courseRepository.GetCoursesList().Result;
+      var courseDbo = _courseRepository.GetCoursesList().Result;
+      var courseResponse = _mapper.Map<List<CourseResponse>>(courseDbo);
+      CourseResponseExtension.FullfullEvaluationTimes(courseResponse, _evaluationRepository);
+
+      return courseResponse;
     }
     
     public CourseDbo? GetCourseById(int id)
     {
       return _courseRepository.GetCourseById(id).Result;
     }
+
   }
 }

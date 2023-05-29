@@ -8,6 +8,9 @@ namespace GradeRank_Domain.Models.Response
   {
     public int IdQuestion { get; set; }
     public string Question { get; set; }
+    public bool IsCourseQuestion { get; set; }
+    public bool IsProfessorQuestion { get; set; }
+
 
   }
 }

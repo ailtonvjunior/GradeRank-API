@@ -1,6 +1,6 @@
-﻿using GradeRank_Domain.Repositories;
+﻿using GradeRank_Domain.Domain.Exceptions;
+using GradeRank_Domain.Repositories;
 using GradeRank_Infrastructure.Context;
-using inter.people.central.Domain.Exceptions;
 
 namespace GradeRank_Infrastructure.DataAccess
 {
