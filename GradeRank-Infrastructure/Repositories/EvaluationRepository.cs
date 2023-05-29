@@ -18,6 +18,18 @@ namespace GradeRank_Infrastructure.Repositories
     {
       await _context.Evaluations.AddAsync(evaluation);
     }
+    
+    public async Task UpdateEvaluation(EvaluationDbo evaluation)
+    {
+      var oldEvaluation = _context.Evaluations.FirstOrDefault(e => e.IdUser == evaluation.IdUser &&
+                                                                   e.IdCourse == evaluation.IdCourse &&
+                                                                   e.IdQuestion == evaluation.IdQuestion);
+      if (oldEvaluation != null)
+      {
+        oldEvaluation.ValueEvaluation = evaluation.ValueEvaluation;
+        _context.SaveChanges();
+      }
+    }
 
     public void DeleteEvaluation(EvaluationDbo evaluation)
     {

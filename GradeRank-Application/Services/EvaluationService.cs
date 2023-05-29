@@ -37,6 +37,22 @@ namespace GradeRank_Application.UseCases
       }
       await _unitOfWork.Save();
     }
+    
+    public async Task UpdateEvaluation(EvaluationComponentRequest evaluation)
+    {
+      var evaluationDbo = await _evaluationRepository.GetEvaluationsByIdUserAndIdCourse(evaluation.IdUser, evaluation.IdCourse);
+      if (evaluationDbo.Count == 0) 
+      {
+        throw new GradeRankException("O usuário não possui avaliação para esta disciplina");
+      }
+
+      var evaluationDboList = _mapper.Map<List<EvaluationDbo>>(evaluation);
+      foreach (var item in evaluationDboList)
+      {
+        await _evaluationRepository.UpdateEvaluation(item);
+      }
+      await _unitOfWork.Save();
+    }
 
     public async Task DeleteEvaluation(int idUser, int idCourse)
     {
