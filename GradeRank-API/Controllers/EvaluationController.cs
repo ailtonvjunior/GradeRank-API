@@ -31,6 +31,23 @@ namespace GradeRank_API.Controllers
         return Conflict(ex.Message);
       }
     }
+    
+    [Route("api/[controller]")]
+    [AllowAnonymous]
+    [HttpPut]
+    public async Task<IActionResult> UpdateEvaluation([FromBody] EvaluationComponentRequest evaluation)
+    {
+      try
+      {
+        await _evaluationService.UpdateEvaluation(evaluation);
+        return Ok();
+
+      }
+      catch (GradeRankException ex)
+      {
+        return Conflict(ex.Message);
+      }
+    }
 
     [AllowAnonymous]
     [HttpDelete ("/api/{idUser}/{idCourse}")]
