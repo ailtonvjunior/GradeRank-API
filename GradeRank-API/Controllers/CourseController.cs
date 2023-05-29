@@ -35,5 +35,16 @@ namespace GradeRank_API.Controllers
       if (course == null) return NotFound();
       return Ok(course);
     }
+    
+    [Route("api/[controller]Evaluation")]
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetCourseEvaluation(int id)
+    {
+      var courseEvaluation = _courseService.GetCourseEvaluation(id);
+      if (courseEvaluation == null) return NotFound();
+      return Ok(courseEvaluation);
+    }
   }
 }

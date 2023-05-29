@@ -12,7 +12,8 @@ namespace GradeRank_Application.Interfaces
 {
     public interface ICourseService
   {
-    List<CourseResponse> GetCoursesList(); 
+    List<CourseResponse> GetCoursesList();
     CourseDbo? GetCourseById(int id);
+    List<CourseEvaluationQuestionRequest> GetCourseEvaluation(int id);
   }
 }
