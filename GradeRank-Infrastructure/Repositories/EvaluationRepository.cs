@@ -30,14 +30,14 @@ namespace GradeRank_Infrastructure.Repositories
       return evaluation;
     }
 
-    public int GetNumberOfEvaluationsByIdCourse(int idCourse)
-    {
-      var numRows = _context.Evaluations
-        .Select(e => new { e.IdCourse, e.IdUser })
-        .Distinct()
-        .Count();
-      return numRows;
-    }
+    //public int GetNumberOfEvaluationsByIdCourse(int idCourse)
+    //{
+    //  var numRows = _context.Evaluations
+    //    .Select(e => new { e.IdCourse, e.IdUser })
+    //    .Distinct()
+    //    .Count();
+    //  return numRows;
+    //}
 
     public List<CourseEvaluationDto> GetNumberOfEvaluations()
     {
