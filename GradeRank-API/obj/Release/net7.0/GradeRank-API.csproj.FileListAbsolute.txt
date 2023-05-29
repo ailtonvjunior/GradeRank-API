@@ -75,3 +75,5 @@
 /home/taiskc/MEGAsync/CC/20231/PDS/GradeRank-API/GradeRank-API/obj/Release/net7.0/GradeRank-API.pdb
 /home/taiskc/MEGAsync/CC/20231/PDS/GradeRank-API/GradeRank-API/obj/Release/net7.0/GradeRank-API.genruntimeconfig.cache
 /home/taiskc/MEGAsync/CC/20231/PDS/GradeRank-API/GradeRank-API/obj/Release/net7.0/ref/GradeRank-API.dll
+/home/taiskc/MEGAsync/CC/20231/PDS/GradeRank-API/GradeRank-API/bin/Release/net7.0/AutoMapper.dll
+/home/taiskc/MEGAsync/CC/20231/PDS/GradeRank-API/GradeRank-API/bin/Release/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
