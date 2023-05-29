@@ -38,6 +38,24 @@ namespace GradeRank_Infrastructure.Repositories
         .Count();
       return numRows;
     }
+
+    public List<CourseEvaluationDto> GetNumberOfEvaluations()
+    {
+      var query = (from t in
+                      (from e in _context.Evaluations
+                       where e.IdQuestion == 1
+                       select new { e.IdCourse, e.IdUser })
+                   group t by t.IdCourse into g
+                   select new CourseEvaluationDto
+                   {
+                     IdCourse = g.Key,
+                     EvaluationTimes = g.Count()
+                   }).ToList();
+
+      return query;
+    }
+
+
   }
 }
 

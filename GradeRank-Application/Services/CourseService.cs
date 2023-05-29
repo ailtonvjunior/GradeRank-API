@@ -28,7 +28,8 @@ namespace GradeRank_Application.UseCases
     {
       var courseDbo = _courseRepository.GetCoursesList().Result;
       var courseResponse = _mapper.Map<List<CourseResponse>>(courseDbo);
-      CourseResponseExtension.FullfullEvaluationTimes(courseResponse, _evaluationRepository);
+      var evaluationTimes = _evaluationRepository.GetNumberOfEvaluations();
+      CourseResponseExtension.FullfullEvaluationTimes(courseResponse, evaluationTimes);
 
       return courseResponse;
     }
