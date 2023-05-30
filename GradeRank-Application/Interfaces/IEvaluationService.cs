@@ -14,5 +14,6 @@ namespace GradeRank_Application.Interfaces
     Task CreateNewEvaluation(EvaluationComponentRequest evaluation);
     Task UpdateEvaluation(EvaluationComponentRequest evaluation);
     Task DeleteEvaluation(int idUser, int idCourse);
+    Task<EvaluationComponentResponse> GetEvaluationsPerIdUser(int idUser);
   }
 }

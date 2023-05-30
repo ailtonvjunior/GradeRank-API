@@ -43,6 +43,25 @@ namespace GradeRank_Domain.Mappings
 
       CreateMap<EvaluationRequest, EvaluationDbo>()
           .ForMember(dest => dest.EvaluationDate, opt => opt.MapFrom(src => DateTime.Now));
+
+      CreateMap<EvaluationDbo, EvaluationResponse>();
+
+      CreateMap<List<EvaluationDbo>, EvaluationComponentResponse>()
+          .ForMember(dest => dest.IdCourse, opt => opt.MapFrom(src => src[0].IdCourse))
+          .ForMember(dest => dest.IdUser, opt => opt.MapFrom(src => src[0].IdUser))
+          .AfterMap((src, dest, context) =>
+          {
+            dest.EvaluationResponse = context.Mapper.Map<List<EvaluationDbo>, List<EvaluationResponse>>(src);
+          });
+
+      CreateMap<EvaluationDbo, EvaluationComponentResponse>()
+          .ForMember(dest => dest.EvaluationResponse, opt => opt.Ignore())
+          .ForMember(dest => dest.IdCourse, opt => opt.MapFrom(src => src.IdCourse))
+          .ForMember(dest => dest.IdUser, opt => opt.MapFrom(src => src.IdUser))
+          .AfterMap((src, dest, context) =>
+          {
+              dest.EvaluationResponse = new List<EvaluationResponse> { context.Mapper.Map<EvaluationDbo, EvaluationResponse>(src) };
+          });
     }
     private void MappingCourse()
     {

@@ -41,15 +41,22 @@ namespace GradeRank_Application.UseCases
       return courseResponse;
     }
     
-    public CourseDbo? GetCourseById(int id)
+    public CourseResponse? GetCourseById(int id)
     {
-      return _courseRepository.GetCourseById(id).Result;
+      var courseDbo = _courseRepository.GetCourseById(id).Result;
+      var professor = _professorRepository.GetProfessorsList().Result.SingleOrDefault(p => p.Id == courseDbo.Professor);
+      var courseResponse = _mapper.Map<CourseResponse>(courseDbo);
+      courseResponse.NameProfessor = professor.Name;
+      var evaluationTimes = _evaluationRepository.GetEvaluationsByIdCourse(id);
+      courseResponse.EvaluationTimes = evaluationTimes.Result.ValueEvaluation;
+
+      return courseResponse;
     }
 
     public List<CourseEvaluationQuestionRequest> GetCourseEvaluation(int idCourse)
     {
       List<CourseEvaluationQuestionRequest> courseEvaluation = new List<CourseEvaluationQuestionRequest>();
-      List<EvaluationDbo> courseEvaluations = _evaluationRepository.GetEvaluationsByIdCourse(idCourse).Result;
+      List<EvaluationDbo> courseEvaluations = _evaluationRepository.GetEvaluationsByIdCourseList(idCourse).Result;
       var courseEvaluationsPerQuestion = courseEvaluations.GroupBy(evaluation => evaluation.IdQuestion);
       List<QuestionDbo> questions = _questionRepository.GetQuestionsList().Result;
       foreach (var evaluation in courseEvaluationsPerQuestion.AsQueryable())
@@ -59,6 +66,12 @@ namespace GradeRank_Application.UseCases
         CourseEvaluationQuestionRequest question = new CourseEvaluationQuestionRequest(questionDescription, questionAverageValue);
         courseEvaluation.Add(question);
       }
+
+      var idProfessor = _courseRepository.GetCourseById(idCourse).Result.Professor;
+
+      var professorsList = _professorRepository.GetProfessorsList().Result;
+      CourseResponseExtension.FullfillProfessorNamesOnCourseEvaluationQuestionRequest(courseEvaluation, professorsList, idProfessor);
+
       return courseEvaluation;
     }
   }

@@ -14,5 +14,6 @@ namespace GradeRank_Domain.Models.Request
         }
         public string Question { get; set; }
         public double Value { get; set; }
-    }
+        public string NameProfessor { get; set; }
+  }
 }

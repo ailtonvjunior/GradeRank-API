@@ -1,25 +1,50 @@
 ﻿using AutoMapper;
 using GradeRank_Application.Interfaces;
 using GradeRank_Domain.Domain.Exceptions;
+using GradeRank_Domain.Domain.Extensions;
 using GradeRank_Domain.Models.DBO;
 using GradeRank_Domain.Models.Request;
 using GradeRank_Domain.Models.Response;
 using GradeRank_Domain.Repositories;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GradeRank_Application.UseCases
 {
   public class EvaluationService : IEvaluationService
   {
     private readonly IEvaluationRepository _evaluationRepository;
+    private readonly IProfessorRepository _professorRepository;
+    private readonly ICourseRepository _courseRepository;
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
 
 
-    public EvaluationService(IEvaluationRepository evaluationRepository, IMapper mapper, IUnitOfWork unitOfWork)
+    public EvaluationService(IEvaluationRepository evaluationRepository, IMapper mapper, IUnitOfWork unitOfWork, IProfessorRepository professorRepository, ICourseRepository courseRepository)
     {
       _evaluationRepository = evaluationRepository;
       _mapper = mapper;
       _unitOfWork = unitOfWork;
+      _professorRepository = professorRepository;
+      _courseRepository = courseRepository;
+    }
+
+    public async Task<EvaluationComponentResponse> GetEvaluationsPerIdUser(int idUser)
+    {
+      var evaluationDbo = await _evaluationRepository.GetEvaluationsByIdUser(idUser);
+      if (evaluationDbo.Count == 0)
+      {
+        throw new GradeRankException("Este usuário não realizou nenhuma avaliação");
+      }
+
+      var evaluationComponentResponse = _mapper.Map<EvaluationComponentResponse>(evaluationDbo);
+
+      var professors = await _professorRepository.GetProfessorsList();
+      var courses = await _courseRepository.GetCoursesList();
+
+      EvaluationComponentResponseExtension.FullfillProfessorNames(evaluationComponentResponse, professors);
+      EvaluationComponentResponseExtension.FullfillCourseName(evaluationComponentResponse, courses);
+
+      return evaluationComponentResponse;
     }
 
     public async Task CreateNewEvaluation(EvaluationComponentRequest evaluation)
@@ -63,7 +88,6 @@ namespace GradeRank_Application.UseCases
         _evaluationRepository.DeleteEvaluation(item);
       }
       await _unitOfWork.Save();
-
     }
   }
 }

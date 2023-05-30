@@ -42,11 +42,23 @@ namespace GradeRank_Infrastructure.Repositories
       return evaluation;
     }
 
-    public async Task<List<EvaluationDbo>> GetEvaluationsByIdCourse(int idCourse)
+    public async Task<List<EvaluationDbo>> GetEvaluationsByIdCourseList(int idCourse)
     {
       var evaluation = await _context.Evaluations.Where(e => e.IdCourse == idCourse).ToListAsync();
       return evaluation;
     }
+
+    public async Task<List<EvaluationDbo>> GetEvaluationsByIdUser(int idUser)
+    {
+      var evaluation = await _context.Evaluations.Where(e => e.IdUser == idUser).ToListAsync();
+      return evaluation;
+    }
+    public async Task<EvaluationDbo> GetEvaluationsByIdCourse(int idCourse)
+    {
+      var evaluation = await _context.Evaluations.Where(e => e.IdCourse == idCourse).FirstOrDefaultAsync();
+      return evaluation;
+    }
+
     public int GetNumberOfEvaluationsByIdCourse(int idCourse)
     {
       var numRows = _context.Evaluations

@@ -3,10 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GradeRank_Domain.Models.Request
 {
-    public class EvaluatioComponentResponse
+    public class EvaluationComponentResponse
     {
         public int IdUser { get; set; }
         public int IdCourse { get; set; }
+        public string? NameCourse { get; set; }
+        public string? NameProfessor { get; set; }
         public List<EvaluationResponse>? EvaluationResponse { get; set; }
     }
 }

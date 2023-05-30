@@ -15,6 +15,26 @@ namespace GradeRank_API.Controllers
       _evaluationService = evaluationService;
     }
 
+    [AllowAnonymous]
+    [HttpGet("/api/{idUser}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetEvaluationsPerIdUser([FromRoute] int idUser)
+    {
+      try
+      {
+        var evaluations = await _evaluationService.GetEvaluationsPerIdUser(idUser);
+        if (evaluations == null) return NotFound();
+
+        return Ok(evaluations);
+
+      }
+      catch (GradeRankException ex)
+      {
+        return Conflict(ex.Message);
+      }
+    }
+
     [Route("api/[controller]")]
     [AllowAnonymous]
     [HttpPost]
