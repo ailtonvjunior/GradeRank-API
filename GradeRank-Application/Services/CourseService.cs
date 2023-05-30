@@ -12,18 +12,20 @@ namespace GradeRank_Application.UseCases
   {
     private readonly ICourseRepository _courseRepository;
     private readonly IEvaluationRepository _evaluationRepository;
+    private readonly IProfessorRepository _professorRepository;
     private readonly IQuestionRepository _questionRepository;
 
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public CourseService(ICourseRepository courseRepository, IUnitOfWork unitOfWork, IMapper mapper, IEvaluationRepository evaluationRepository, IQuestionRepository questionRepository)
+    public CourseService(ICourseRepository courseRepository, IUnitOfWork unitOfWork, IMapper mapper, IEvaluationRepository evaluationRepository, IQuestionRepository questionRepository, IProfessorRepository professorRepository)
     {
       _courseRepository = courseRepository;
       _unitOfWork = unitOfWork;
       _mapper = mapper;
       _evaluationRepository = evaluationRepository;
       _questionRepository = questionRepository;
+      _professorRepository = professorRepository;
     }
 
     public List<CourseResponse> GetCoursesList()
@@ -31,7 +33,10 @@ namespace GradeRank_Application.UseCases
       var courseDbo = _courseRepository.GetCoursesList().Result;
       var courseResponse = _mapper.Map<List<CourseResponse>>(courseDbo);
       var evaluationTimes = _evaluationRepository.GetNumberOfEvaluations();
-      CourseResponseExtension.FullfullEvaluationTimes(courseResponse, evaluationTimes);
+      var professorsList = _professorRepository.GetProfessorsList().Result;
+
+      CourseResponseExtension.FullfillProfessorNames(courseResponse, professorsList);
+      CourseResponseExtension.FullfillvaluationTimes(courseResponse, evaluationTimes);
 
       return courseResponse;
     }

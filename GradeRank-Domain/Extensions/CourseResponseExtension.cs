@@ -10,7 +10,7 @@ namespace GradeRank_Domain.Domain.Extensions
 
   public static class CourseResponseExtension
   {
-    public static void FullfullEvaluationTimes(this List<CourseResponse> courseResponseList, List<CourseEvaluationDto> evaluationTimes)
+    public static void FullfillvaluationTimes(this List<CourseResponse> courseResponseList, List<CourseEvaluationDto> evaluationTimes)
     {
       foreach (var courseResponse in courseResponseList)
       {
@@ -18,6 +18,18 @@ namespace GradeRank_Domain.Domain.Extensions
         if (courseEvaluation != null)
         {
           courseResponse.EvaluationTimes = courseEvaluation.EvaluationTimes;
+        }
+      }
+    }
+
+    public static void FullfillProfessorNames(this List<CourseResponse> courseResponseList, List<ProfessorDbo> professorsList)
+    {
+      foreach (var courseResponse in courseResponseList)
+      {
+        var professor = professorsList.FirstOrDefault(prof => prof.Id == courseResponse.IdProfessor);
+        if (professor != null)
+        {
+          courseResponse.NameProfessor = professor.Name;
         }
       }
     }

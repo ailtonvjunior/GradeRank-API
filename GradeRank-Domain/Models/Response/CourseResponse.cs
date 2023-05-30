@@ -16,7 +16,7 @@ namespace GradeRank_Domain.Models.Response
     public string Department { get; set; }
     public string Code { get; set; }
     public int IdProfessor { get; set; }
-    public int NameProfessor { get; set; }
+    public string NameProfessor { get; set; }
     public int EvaluationTimes { get; set; }
   }
 }
