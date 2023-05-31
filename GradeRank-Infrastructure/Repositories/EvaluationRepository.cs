@@ -50,13 +50,22 @@ namespace GradeRank_Infrastructure.Repositories
 
     public async Task<List<EvaluationDbo>> GetEvaluationsByIdUser(int idUser)
     {
-      var evaluation = await _context.Evaluations.Where(e => e.IdUser == idUser).ToListAsync();
+      var evaluation = await _context.Evaluations
+          .Where(e => e.IdUser == idUser)
+          .Select(e => new { IdCourse = e.IdCourse, EvaluationDate = e.EvaluationDate })
+          .Distinct()
+          .Select(e => new EvaluationDbo { IdCourse = e.IdCourse, EvaluationDate = e.EvaluationDate })
+          .ToListAsync();
+
       return evaluation;
     }
-    public async Task<EvaluationDbo> GetEvaluationsByIdCourse(int idCourse)
+
+    public async Task<int> GetEvaluationsByIdCourse(int idCourse)
     {
-      var evaluation = await _context.Evaluations.Where(e => e.IdCourse == idCourse).FirstOrDefaultAsync();
-      return evaluation;
+      var evaluation = await _context.Evaluations.FirstOrDefaultAsync(u => u.IdCourse == idCourse);
+      if (evaluation == null)
+        return 0;
+      return evaluation.ValueEvaluation;
     }
 
     public int GetNumberOfEvaluationsByIdCourse(int idCourse)

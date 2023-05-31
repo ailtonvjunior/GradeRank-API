@@ -11,17 +11,22 @@ namespace GradeRank_Domain.Domain.Extensions
 
   public static class EvaluationComponentResponseExtension
   {
-    public static void FullfillCourseName(this EvaluationComponentResponse evaluationComponent, List<CourseDbo> courseList)
+    public static void FullfillCourseName(this List<EvaluationComponentResponse> evaluationComponentList, List<CourseDbo> courseList)
     {
+      foreach (var evaluationComponent in evaluationComponentList)
+      {
         var course = courseList.FirstOrDefault(dto => dto.Id == evaluationComponent.IdCourse);
         if (course != null)
         {
           evaluationComponent.NameCourse = course.Name;
         }
+      }
     }
 
-    public static void FullfillProfessorNames(this EvaluationComponentResponse evaluationComponent, List<ProfessorDbo> professorsList)
+    public static void FullfillProfessorNames(this List<EvaluationComponentResponse> evaluationComponentList, List<ProfessorDbo> professorsList)
     {
+      foreach (var evaluationComponent in evaluationComponentList)
+      {
         var professor = professorsList.FirstOrDefault(prof => prof.Id == evaluationComponent.IdCourse);
         if (professor != null)
         {
@@ -29,4 +34,7 @@ namespace GradeRank_Domain.Domain.Extensions
         }
       }
     }
+
+  }
 }
+

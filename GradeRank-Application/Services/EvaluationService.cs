@@ -28,15 +28,20 @@ namespace GradeRank_Application.UseCases
       _courseRepository = courseRepository;
     }
 
-    public async Task<EvaluationComponentResponse> GetEvaluationsPerIdUser(int idUser)
+    public async Task<List<EvaluationComponentResponse>> GetEvaluationsPerIdUser(int idUser)
     {
       var evaluationDbo = await _evaluationRepository.GetEvaluationsByIdUser(idUser);
+
+      //remove duplicatas devido a segundos de diferença na inserção
+      var distinctEvaluationDbo = evaluationDbo.GroupBy(e => e.IdCourse).Select(g => g.First()).ToList();
+
+
       if (evaluationDbo.Count == 0)
       {
         throw new GradeRankException("Este usuário não realizou nenhuma avaliação");
       }
 
-      var evaluationComponentResponse = _mapper.Map<EvaluationComponentResponse>(evaluationDbo);
+      var evaluationComponentResponse = _mapper.Map<List<EvaluationComponentResponse>>(distinctEvaluationDbo);
 
       var professors = await _professorRepository.GetProfessorsList();
       var courses = await _courseRepository.GetCoursesList();

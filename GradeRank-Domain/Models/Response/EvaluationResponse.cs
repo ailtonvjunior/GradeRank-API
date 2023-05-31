@@ -8,7 +8,6 @@ namespace GradeRank_Domain.Models.Request
   {
     public int IdQuestion { get; set; }
     public int ValueEvaluation { get; set; }
-    public DateTime? EvaluationDate { get; set; }
 
   }
 }

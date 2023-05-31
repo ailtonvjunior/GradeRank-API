@@ -47,8 +47,6 @@ namespace GradeRank_Application.UseCases
       var professor = _professorRepository.GetProfessorsList().Result.SingleOrDefault(p => p.Id == courseDbo.Professor);
       var courseResponse = _mapper.Map<CourseResponse>(courseDbo);
       courseResponse.NameProfessor = professor.Name;
-      var evaluationTimes = _evaluationRepository.GetEvaluationsByIdCourse(id);
-      courseResponse.EvaluationTimes = evaluationTimes.Result.ValueEvaluation;
 
       return courseResponse;
     }

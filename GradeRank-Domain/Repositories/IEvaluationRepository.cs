@@ -11,9 +11,9 @@ namespace GradeRank_Domain.Repositories
     Task<List<EvaluationDbo?>?> GetEvaluationsByIdUserAndIdCourse(int idUser, int idCourse);
     Task<List<EvaluationDbo>> GetEvaluationsByIdCourseList(int idCourse);
     void DeleteEvaluation(EvaluationDbo evaluation);
-    //int GetNumberOfEvaluationsByIdCourse(int idCourse);
+    int GetNumberOfEvaluationsByIdCourse(int idCourse);
     Task<List<EvaluationDbo>> GetEvaluationsByIdUser(int idUser);
-    Task<EvaluationDbo> GetEvaluationsByIdCourse(int idCourse);
+    Task<int> GetEvaluationsByIdCourse(int idCourse);
     List<CourseEvaluationDto> GetNumberOfEvaluations();
   }
 }
